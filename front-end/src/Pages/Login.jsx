@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link,  useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { FaEye ,FaEyeSlash} from "react-icons/fa";
+
 
 function Login({setIsAuthenticated}) {
   const [loginData, setLoginData] = useState({
@@ -36,6 +38,10 @@ function Login({setIsAuthenticated}) {
       );
       toast.success(response.data.message); 
       setIsAuthenticated(true);
+      // setLoginData({
+      //   email: "",
+      //   password: "",
+      // });
       setTimeout(() => {
         navigate("/home");
       }, 1000);
@@ -106,10 +112,10 @@ function Login({setIsAuthenticated}) {
               className="w-full rounded-lg border border-gray-800 focus:outline-none focus:ring focus:ring-slate-200 px-3 py-2 text-xs "
             />
             <span
-              className="absolute right-8 top-1/2 cursor-pointer"
+              className="absolute right-9 top-8 cursor-pointer"
               onClick={togglePasswordVisibility}
             >
-              {isVisible ? "👁️" : "🙈"}
+              {isVisible ? <FaEye /> :<FaEyeSlash /> }
             </span>
           </div>
 

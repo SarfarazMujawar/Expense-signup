@@ -1,11 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
 function Signup() {
-  const location = useLocation();
   const [userData, setUserData] = useState({
     name: "",
     email: "",

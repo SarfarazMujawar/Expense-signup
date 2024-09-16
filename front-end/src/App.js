@@ -6,7 +6,7 @@ import Signup from './Pages/Signup';
 import Home from './Pages/Home'
 import { useEffect } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
+import { UserProvider } from './Context/UserContext';
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
           const response = await axios.get('http://localhost:8000/auth/verify-token', {
             withCredentials: true});
           if (response.data.valid) {
-            console.log(response.data.valid);
+           
             setIsAuthenticated(true);
           }
           else {
@@ -39,7 +39,8 @@ function App() {
 
   },[]);
   return (
-    <div>
+    
+<UserProvider>
       <Routes>
         <Route path='/' element={<Navigate to='/login' />} />
         
@@ -59,7 +60,8 @@ function App() {
           element={isAuthenticated ? <Home setIsAuthenticated={setIsAuthenticated} /> : <Navigate to='/login' />} 
         />
       </Routes>
-    </div>
+      </UserProvider>
+
   );
 }
 

@@ -33,7 +33,7 @@ const ExpenseSchema = new Schema({
         type:String,
         required:true
     },
-    expense:[ExpenseSchema]
+    expenses:[ExpenseSchema]
  });
 
 const User = mongoose.model('User',UserSchema);
