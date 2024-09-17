@@ -1,10 +1,11 @@
 import React from 'react'
 
-function Input({ type, placeholder, value, onChange, label }) {
+function Input({ type, placeholder, value, onChange, label,name }) {
   return (
     <div>
-      {label && <label>{label}</label>}
+     
       <input
+        name={name}
         type={type}
         placeholder={placeholder}
         value={value}

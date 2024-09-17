@@ -26,7 +26,7 @@ function Home({ setIsAuthenticated }) {
   if (!user) {
     return <div>Loading...</div>; // or a suitable loading indicator
   }
-  console.log(transactions);
+  console.log('transations',transactions);
 
   return (
     <div className="w-full bg-zinc-500">
@@ -40,7 +40,8 @@ function Home({ setIsAuthenticated }) {
     <Header user={user}/>
     <Balance transactions={transactions} />
     <IncomeExpense transactions={transactions} />
-    {/* <AddTransaction addTransaction={addTransaction} /> */}
+    
+    <AddTransaction fetchUserData={fetchUserData} />
   </div>
 </div>
   );

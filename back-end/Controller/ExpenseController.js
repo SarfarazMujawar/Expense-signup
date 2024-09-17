@@ -17,8 +17,8 @@ const fetchExpense = async(req,res)=>{
 // add expense 
 const addExpense = async (req,res)=>{
     const{_id} = req.user;
-    const {expense,amount} = req.body;
-    const expenseData = {expense,amount};
+    const {text,amount} = req.body;
+    const expenseData = {text,amount};
     
 try{
     const user = await User.findById(_id);

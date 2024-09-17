@@ -19,7 +19,7 @@ function Balance({transactions}) {
       
       
   return (
-    <div className='flex flex-col justify-start items-start w-full mt-4' >
+    <div className='flex flex-col justify-start items-start w-full mt-4 px-4' >
       <p className='font-semibold text-sm'>YOUR BALANCE</p>
       <p className='text-3xl font-bold '>{formatAmount(balance)}</p>
     </div>

@@ -38,6 +38,7 @@ export function UserProvider({children}) {
     };
     useEffect(() => {
         fetchUserData();
+        
     }, []);
     
   return (
