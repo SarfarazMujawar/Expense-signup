@@ -3,40 +3,38 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ExpenseSchema = new Schema({
-    text:{
-        required:true,
-        type:String
+    text: {
+        required: true,
+        type: String
     },
-    amount:{
-        type:Number,
-        required:true
+    amount: {
+        type: Number,
+        required: true
     },
-    createdAt :{
-        type:Date,
-        required:true,
-        default:Date.now
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now
     }
-  
-
 
 })
 
- const UserSchema = new Schema({
-    name:{
-        required:true,
-        type:String
+const UserSchema = new Schema({
+    name: {
+        required: true,
+        type: String
     },
-    email:{
-        required:true,
-        type:String
+    email: {
+        required: true,
+        type: String
     },
-    password:{
-        type:String,
-        required:true
+    password: {
+        type: String,
+        required: true
     },
-    expenses:[ExpenseSchema]
- });
+    expenses: [ExpenseSchema]
+});
 
-const User = mongoose.model('User',UserSchema);
+const User = mongoose.model('User', UserSchema);
 
- module.exports = User;
+module.exports = User;
