@@ -10,7 +10,7 @@ router.get('/home',authToken,(req,res)=>{
     res.status(200).json({ message: 'Welcome to the home page!', user: req.user });
 })
 //logout route
-// Logout endpoint
+
 router.post('/logout',logout);
 router.get('/verify-token',verifyToken)
 
