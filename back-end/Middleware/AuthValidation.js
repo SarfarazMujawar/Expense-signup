@@ -23,6 +23,7 @@ const signupValidation = (req, res, next) => {
         return res.status(400).json({ message: "Bad Request", error: error.details[0].message });
     }
     next();
+    
 }
 
 module.exports = { loginValidation, signupValidation };
