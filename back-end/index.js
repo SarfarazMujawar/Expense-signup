@@ -1,4 +1,4 @@
-const express= require('express');
+const express = require('express');
 const app = express();
 const cors = require('cors');
 require('dotenv').config();
@@ -15,9 +15,9 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.use('/auth',authRouter)
-app.use('/expense',expenseRouter)
+app.use('/auth', authRouter)
+app.use('/expense', expenseRouter)
 const PORT = process.env.PORT || 8000;
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`Server Running on ${PORT}`);
 })
