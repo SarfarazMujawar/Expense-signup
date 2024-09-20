@@ -7,6 +7,7 @@ const expenseValidation = (req,res,next)=>{
         createdAt:Joi.date().default(()=>new Date()).optional()
     })
 
+    
     const {error} = schema.validate(req.body);
     if(error)
     {
