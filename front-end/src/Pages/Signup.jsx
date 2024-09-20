@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
-
+import {  toast } from "react-toastify";
+import { GiTakeMyMoney } from "react-icons/gi";
+import { FaEye ,FaEyeSlash} from "react-icons/fa";
 function Signup() {
   const [userData, setUserData] = useState({
     name: "",
@@ -41,7 +42,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/auth/signup",
+        `${process.env.REACT_APP_BACKEND_URL}/auth/signup`,
         userData
       );
 
@@ -82,17 +83,22 @@ function Signup() {
   // this hook is used to after successful user creation we will navigate to login page
   const navigate = useNavigate();
   return (
-    <div className="flex justify-center items-center bg-gradient-to-b from-indigo-900 to-indigo-950 h-screen ">
-      <div className="card bg-white rounded-lg w-72">
-        <h1 className="text-xl font-bold tracking-tight text-center">
+    <div className="h-screen overflow-hidden"><nav className="w-full h-14 bg-black justify-around flex  items-center px-10">
+    <div className="flex flex-row items-center gap-1"> 
+<span className="text-white text-xl font-bold">Expenses <span className='text-blue-400'>Tracker</span>  </span><GiTakeMyMoney className="text-green-400 text-2xl"/>
+</div>
+</nav>
+    <div className="flex justify-center items-center bg-gradient-to-br from-gray-900 via-gray-700 to-black min-h-screen">
+      <div className="card bg-white bg-opacity-15 backdrop-blur-lg rounded-lg w-72 py-2 shadow-2xl shadow-black">
+        <h1 className="text-xl font-bold tracking-tight text-center text-white">
           Create an account
         </h1>
 
-        <h2 className="text-xs text-center">Master Your Finances: Track Every Penny!</h2>
+        <h2 className="text-xs text-center text-white">Master Your Finances: Track Every Penny!</h2>
 
         <form className="flex flex-col justify-center items-center my-3 ">
           <div className="relative w-full px-7 ">
-            <label htmlFor="name" className="block  text-xs text-gray-500 my-1 font-bold">
+            <label htmlFor="name" className="block  font-semibold text-sm text-white">
               Name
             </label>
             <input
@@ -103,11 +109,11 @@ function Signup() {
               autoFocus
               value={userData.name}
               onChange={handleChange}
-              className="w-full rounded-lg border border-gray-800 focus:outline-none focus:ring focus:ring-slate-200 px-3 py-2 text-xs "
+              className=" w-full bg-gray-700 font-semibold  placeholder:text-gray-400 placeholder:text-sm text-white  border border-zinc-800  p-1 mb-2 focus:outline-none focus:ring-2 focus:ring-slate-800 rounded-md  "
             />
           </div>
           <div className="relative w-full px-7">
-            <label htmlFor="email"className="block  text-xs text-gray-500 my-1 font-bold">
+            <label htmlFor="email"className="block  font-semibold text-sm text-white">
               Email
             </label>
             <input
@@ -117,11 +123,11 @@ function Signup() {
               autoComplete="off"
               value={userData.email}
               onChange={handleChange}
-              className="w-full rounded-lg border border-gray-800 focus:outline-none focus:ring focus:ring-slate-200 px-3 py-2 text-xs "
+              className=" w-full bg-gray-700 font-semibold  placeholder:text-gray-400 placeholder:text-sm text-white  border border-zinc-800  p-1 mb-2 focus:outline-none focus:ring-2 focus:ring-slate-800 rounded-md  "
             />
           </div>
           <div className="relative w-full px-7">
-            <label htmlFor="password" className="block  text-xs text-gray-500 my-1 font-bold">
+            <label htmlFor="password" className="block  font-semibold text-sm text-white">
               Password
             </label>
             <input
@@ -131,12 +137,12 @@ function Signup() {
               autoComplete="off"
               value={userData.password}
               onChange={handleChange}
-              className="w-full rounded-lg border border-gray-800 focus:outline-none focus:ring focus:ring-slate-200 px-3 py-2 text-xs "
+              className=" w-full bg-gray-700 font-semibold  placeholder:text-gray-400 placeholder:text-sm text-white  border border-zinc-800  p-1 mb-2 focus:outline-none focus:ring-2 focus:ring-slate-800 rounded-md  "
             />
-            <span className="absolute right-8 top-1/2 cursor-pointer"onClick={togglePasswordVisibility}>{isVisible?'👁️':'🙈'}</span>
+            <span className="absolute right-9 top-8 cursor-pointer"onClick={togglePasswordVisibility}>{isVisible?<FaEye className="text-white" />:<FaEyeSlash className="text-white"/>}</span>
           </div>
           <div className="relative w-full px-7">
-            <label htmlFor="congPassword" className="block  text-xs text-gray-500 my-1 font-bold">
+            <label htmlFor="congPassword" className="block  font-semibold text-sm text-white">
              Confirm Password
             </label>
             <input
@@ -146,21 +152,22 @@ function Signup() {
               autoComplete="off"
               value={cPass}
               onChange={handleConfPass}
-              className="w-full rounded-lg border border-gray-800 focus:outline-none focus:ring focus:ring-slate-200 px-3 py-2 text-xs "
+              className=" w-full bg-gray-700 font-semibold  placeholder:text-gray-400 placeholder:text-sm text-white  border border-zinc-800  p-1 mb-2 focus:outline-none focus:ring-2 focus:ring-slate-800 rounded-md  "
             />
-            <span className="absolute right-8 top-1/2 cursor-pointer"onClick={togglePasswordVisibility}>{isVisible?'👁️':'🙈'}</span>
+            <span className="absolute right-9 top-8 cursor-pointer"onClick={togglePasswordVisibility}>{isVisible?<FaEye className="text-white" />:<FaEyeSlash className="text-white"/>}</span>
           </div>
           <div className="relative w-full px-7">
-          <button type="submit" className=" w-full bg-blue-400 rounded-lg px-3 py-2 text-xs text-white my-3  " onClick={handleSubmit}>
+          <button type="submit" className=" shadow-3xl shadow-blue-900 w-full bg-blue-500 rounded-lg px-3 py-2 font-bold text-xs text-white my-3 hover:bg-blue-700 " onClick={handleSubmit}>
             Sign Up
           </button>
           </div>
-          <span className="text-xs">
-            Already have an account ? <Link className=" text-blue-500"to={"/login"}>Login </Link>
+          <span className="text-xs text-white">
+            Already have an account ? <Link className=" text-blue-500 font-semibold"to={"/login"}>Login </Link>
           </span>
         </form>
-        <ToastContainer />
+      
       </div>
+    </div>
     </div>
   );
 }
