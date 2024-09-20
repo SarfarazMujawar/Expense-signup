@@ -1,12 +1,15 @@
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
+
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Home from './Pages/Home'
 import { useEffect } from 'react';
 import axios from 'axios';
 import { UserProvider } from './Context/UserContext';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 
 function App() {
@@ -41,6 +44,12 @@ function App() {
   return (
     
 <UserProvider>
+<ToastContainer
+        autoClose={5000}  // Auto-close globally after 5 seconds
+        closeOnClick={true}  // Allow clicking to close the toast
+        draggable={true}  // Enable dragging to dismiss the toast
+        pauseOnHover={true}  // Pause the timer on hover
+      />
       <Routes>
         <Route path='/' element={<Navigate to='/login' />} />
         
