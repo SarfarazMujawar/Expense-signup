@@ -91,6 +91,7 @@ const verifyToken = (req, res) => {
         return res.status(401).json({ message: "Invalid Token" });
 
     }
+
     res.status(200).json({ valid: true })
 }
 module.exports = { signup, login, logout, verifyToken }
