@@ -66,4 +66,5 @@ const deleteExpense = async(req,res)=>{
     }
 }
 
+
 module.exports = {fetchExpense,addExpense,deleteExpense};
