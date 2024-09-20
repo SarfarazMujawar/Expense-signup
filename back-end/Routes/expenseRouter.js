@@ -4,7 +4,7 @@ const router = express.Router();
 const {fetchExpense, addExpense,deleteExpense} = require('../Controller/ExpenseController');
 const {expenseValidation} = require('../Middleware/expenseValidation');
 
-//to fetch all transactions of user
+
 router.get('/',authToken,fetchExpense);
 router.post('/',authToken,expenseValidation,addExpense);
 router.delete('/:expenseID',authToken,deleteExpense);
