@@ -10,7 +10,7 @@ function Navbar({setUser,setTransactions,setIsAuthenticated}) {
     const handleLogout = async () => {
         try {
           await axios.post(
-            "http://localhost:8000/auth/logout",
+            `${process.env.REACT_APP_BACKEND_URL}/auth/logout`,
             {},
             { withCredentials: true }
           );
@@ -21,14 +21,14 @@ function Navbar({setUser,setTransactions,setIsAuthenticated}) {
           navigate("/login");
         } catch (error) {
           console.log("Error to logout");
-          console.error(error);
+         
         }
       };
   return (
    
-    <nav className="w-full h-14 bg-black justify-around flex  items-center px-10">
+    <nav className="w-full h-14 bg-gradient-to-br from-gray-900  to-black justify-around flex  items-center px-10">
       <div className="flex flex-row items-center gap-1"> 
-  <span className="text-white text-xl font-bold">Expenses <span className='text-rose-500'>Tracker</span>  </span><GiTakeMyMoney className="text-green-400 text-2xl"/>
+  <span className="text-white text-xl font-bold">Expenses <span className='text-blue-400'>Tracker</span>  </span><GiTakeMyMoney className="text-green-400 text-2xl"/>
   </div>
   <div className="flex flex-col items-center">
     <IoIosLogOut className="text-rose-500 text-3xl  cursor-pointer" onClick={handleLogout} />
