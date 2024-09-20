@@ -10,18 +10,18 @@ function Balance({transactions}) {
       };
 
       const amount=  transactions.map(ele=>ele.amount)
-      console.log(amount);
+     
       const balance = amount.reduce((acc,ele)=>{
         return acc+ele;
 
       },0)
-      console.log(balance);
+      
       
       
   return (
-    <div className='flex flex-col justify-start items-start w-full mt-4 px-4' >
-      <p className='font-semibold text-sm'>YOUR BALANCE</p>
-      <p className='text-3xl font-bold '>{formatAmount(balance)}</p>
+    <div className='flex flex-col justify-start items-start w-full mt-4 ' >
+      <p className='font-semibold text-sm text-white'>YOUR BALANCE</p>
+      <p className='text-3xl font-bold text-white '>{formatAmount(balance)}</p>
     </div>
   )
 }
