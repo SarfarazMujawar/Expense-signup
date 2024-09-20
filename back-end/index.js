@@ -10,7 +10,7 @@ connectToDb();
 
 app.use(cookieParser())//To parse cookies from incoming requests
 app.use(cors({
-    origin: 'http://localhost:3000', // Replace with your frontend's URL
+    origin: process.env.FRONTEND_URL, // Replace with your frontend's URL
     credentials: true, // Allow credentials (cookies) to be sent
 }));
 app.use(express.json());
