@@ -4,7 +4,7 @@ import { Link,  useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { FaEye ,FaEyeSlash} from "react-icons/fa";
-
+import { GiTakeMyMoney } from "react-icons/gi";
 
 function Login({setIsAuthenticated}) {
   const [loginData, setLoginData] = useState({
@@ -32,7 +32,7 @@ function Login({setIsAuthenticated}) {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/auth/login",
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
         loginData,
         { withCredentials: true }
       );
@@ -67,21 +67,29 @@ function Login({setIsAuthenticated}) {
   // this hook is used to after successful user creation we will navigate to login page
   
   return (
-    <div className="flex justify-center items-center bg-gradient-to-b from-indigo-900 to-indigo-950 h-screen ">
-      <div className="card bg-white rounded-lg w-72">
-        <h1 className="text-xl font-bold tracking-tight text-center">
+<div className="h-screen overflow-hidden">
+<nav className="w-full h-14 bg-black justify-around flex  items-center px-10">
+      <div className="flex flex-row items-center gap-1"> 
+  <span className="text-white text-xl font-bold">Expenses <span className='text-blue-400'>Tracker</span>  </span><GiTakeMyMoney className="text-green-400 text-2xl"/>
+  </div>
+  </nav>
+
+    <div className="flex justify-center items-center  bg-gradient-to-br from-gray-900 via-gray-700 to-black min-h-screen">
+     
+      <div className="card bg-white bg-opacity-15 backdrop-blur-lg  mt-3 px-3  shadow-black rounded-lg w-72 py-5 shadow-2xl ">
+        <h1 className="text-xl text-white font-bold tracking-tight text-center">
           Hi, Welcome Back!
         </h1>
 
-        <h2 className="text-xs text-center">
+        <h2 className="text-xs text-center text-white">
           Master Your Finances: Track Every Penny!
         </h2>
 
         <form className="flex flex-col justify-center items-center my-3 ">
-          <div className="relative w-full px-7">
+          <div className="relative w-full px-4">
             <label
               htmlFor="email"
-              className="block  text-xs text-gray-500 my-1 font-bold"
+              className="font-semibold text-sm text-white"
             >
               Email
             </label>
@@ -92,13 +100,13 @@ function Login({setIsAuthenticated}) {
               autoComplete="off"
               value={loginData.email}
               onChange={handleChange}
-              className="w-full rounded-lg border border-gray-800 focus:outline-none focus:ring focus:ring-slate-200 px-3 py-2 text-xs "
+              className=" w-full bg-gray-700 font-semibold  placeholder:text-gray-400 placeholder:text-sm text-white  border border-zinc-800  p-1 mb-2 focus:outline-none focus:ring-2 focus:ring-slate-800 rounded-md "
             />
           </div>
-          <div className="relative w-full px-7">
+          <div className="relative w-full px-4">
             <label
               htmlFor="password"
-              className="block  text-xs text-gray-500 my-1 font-bold"
+              className="font-semibold text-sm text-white"
             >
               Password
             </label>
@@ -109,34 +117,35 @@ function Login({setIsAuthenticated}) {
               autoComplete="off"
               value={loginData.password}
               onChange={handleChange}
-              className="w-full rounded-lg border border-gray-800 focus:outline-none focus:ring focus:ring-slate-200 px-3 py-2 text-xs "
+              className=" w-full bg-gray-700 font-semibold  placeholder:text-gray-400 placeholder:text-sm text-white  border border-zinc-800  p-1 mb-2 focus:outline-none focus:ring-2 focus:ring-slate-800 rounded-md "
             />
             <span
               className="absolute right-9 top-8 cursor-pointer"
               onClick={togglePasswordVisibility}
             >
-              {isVisible ? <FaEye /> :<FaEyeSlash /> }
+              {isVisible ? <FaEye className="text-white"/> :<FaEyeSlash className="text-white" /> }
             </span>
           </div>
 
-          <div className="relative w-full px-7">
+          <div className="relative w-full px-4">
             <button
               type="submit"
-              className=" w-full bg-blue-400 rounded-lg px-3 py-2 text-xs text-white my-3  "
+              className=" shadow-3xl shadow-blue-900 w-full bg-blue-500 rounded-lg px-3 py-2 font-bold text-xs text-white my-3 hover:bg-blue-700  "
               onClick={handleSubmit}
             >
               Login
             </button>
           </div>
-          <span className="text-xs">
+          <span className="text-xs text-white">
             Don't have an account ?{" "}
-            <Link className=" text-blue-500" to={"/signup"}>
+            <Link className=" text-blue-500 font-semibold" to={"/signup"}>
               Sign Up{" "}
             </Link>
           </span>
         </form>
-        <ToastContainer />
+       
       </div>
+    </div>
     </div>
   );
 }
