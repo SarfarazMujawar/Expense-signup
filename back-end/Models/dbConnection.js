@@ -10,7 +10,5 @@ mongoose.connect(dbURL).then(() => {
     console.log(`connection error${error}`);
 
 });
-
-
 }
 module.exports = connectToDb;
