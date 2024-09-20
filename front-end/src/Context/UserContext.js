@@ -7,26 +7,30 @@ export function UserProvider({children}) {
     const [user, setUser] = useState(null);
     const [transactions, setTransactions] = useState([]);
 
-    function addTransaction(newTransaction) {
-        setTransactions([...transactions, newTransaction]);
-        console.log(newTransaction);
-    }
-    function deleteTransaction(id){
-        setTransactions(transactions.filter((e)=>
-            id!==e.id
-        ))
+    
+    const deleteTransaction=(id)=>{
+    
+           
+            
+            setTransactions(transactions.filter((e)=>
+                id!==e._id
+            ))
+       
+
+        
     }
     const fetchUserData = async () => {
    
         try {
             console.log("fetching data..");
             
-            const response = await axios.get('http://localhost:8000/expense', { withCredentials: true });
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/expense`, { withCredentials: true });
             if (response.data) {
              
                 setUser(response.data.user);
                 setTransactions(response.data.expense);
-               
+                
+                
                  // Set transactions from user data
             } else {
                 setUser(null);
@@ -42,7 +46,7 @@ export function UserProvider({children}) {
     }, []);
     
   return (
-    <UserContext.Provider value={{ user, setUser, transactions, setTransactions,fetchUserData,addTransaction,deleteTransaction }}>
+    <UserContext.Provider value={{ user, setUser, transactions, setTransactions,fetchUserData,deleteTransaction }}>
     {children}
     </UserContext.Provider>
   )
