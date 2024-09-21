@@ -21,7 +21,7 @@ function App() {
     const checkAuth = async () => {
       try {
         
-          const response = await axios.get(`${REACT_APP_BACKEND_URL}/auth/verify-token`, {
+          const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth/verify-token`, {
             withCredentials: true});
           if (response.data.valid) {
            
