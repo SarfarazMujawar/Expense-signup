@@ -61,7 +61,7 @@ const login = async (req, res) => {
         )
         // sending token in cookies the cookie will be stored in browser for only one hour 
         //after that user need login again
-        res.cookie('token', token, { httpOnly: true, maxAge: 3600000, secure: true });
+        res.cookie('token', token, { httpOnly: true, maxAge: 3600000, secure: true, sameSite: 'None'});
         res.status(201).json({
             message: "Login Successful", success: true, token, email,
             name: logUser.name
