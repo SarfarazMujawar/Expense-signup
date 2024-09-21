@@ -76,7 +76,7 @@ function Login({setIsAuthenticated}) {
 
     <div className="flex justify-center items-center  bg-gradient-to-br from-gray-900 via-gray-700 to-black min-h-screen">
      
-      <div className="card bg-white bg-opacity-15 backdrop-blur-lg  mt-3 px-3  shadow-black rounded-lg w-72 py-5 shadow-2xl ">
+      <div className="card bg-white bg-opacity-15 backdrop-blur-lg  mt-3 px-3  shadow-black rounded-lg max-w-auto py-5 shadow-2xl ">
         <h1 className="text-xl text-white font-bold tracking-tight text-center">
           Hi, Welcome Back!
         </h1>
