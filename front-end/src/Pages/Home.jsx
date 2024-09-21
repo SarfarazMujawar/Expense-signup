@@ -36,7 +36,7 @@ function Home({ setIsAuthenticated }) {
     setTransactions={setTransactions}
     setIsAuthenticated={setIsAuthenticated}
   />
-  <div className="grid grid-cols-1  mt-2 md:grid-cols-2">
+  <div className="grid grid-cols-1  mt-10 md:grid-cols-2 ">
 
   
   <div className="flex flex-col justify-center items-center min-w-80 max-w-80 mx-auto bg-white bg-opacity-20 backdrop-blur-lg rounded-lg mt-3 px-3 py-2 shadow-xl shadow-black "> {/* Center content with a max width */}
