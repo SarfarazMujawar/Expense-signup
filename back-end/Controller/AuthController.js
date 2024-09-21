@@ -61,7 +61,7 @@ const login = async (req, res) => {
         )
         // sending token in cookies the cookie will be stored in browser for only one hour 
         //after that user need login again
-        res.cookie('token', token, { httpOnly: true, maxAge: 3600000, secure: true, sameSite: 'None'});
+        res.cookie('token', token, { httpOnly: true, maxAge: 3600000, secure: true, sameSite: 'None',path: '/'});
         res.status(201).json({
             message: "Login Successful", success: true, token, email,
             name: logUser.name
@@ -76,7 +76,11 @@ const login = async (req, res) => {
 
 const logout = (req, res) => {
     // Clear the cookie (or handle session termination)
-    res.clearCookie('token'); // Assuming 'token' is the cookie name
+    res.clearCookie('token',{
+        path: '/', // Make sure to match the path you used when setting the cookie
+        secure: true, // Set to true if you set it to secure when creating the cookie
+        sameSite: 'None' // Match the sameSite policy
+      }); // Assuming 'token' is the cookie name
     res.status(200).json({ message: 'Logout successful' });
 }
 
